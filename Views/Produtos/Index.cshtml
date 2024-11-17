@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Teste_Frontend.Models.ProdutosViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h4>Lista de produtos</h4>
+
+<p>
+    <a asp-action="Create">Novo produto</a> |
+    <a asp-action="GerarPDF">Gerar PDF</a>
+
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Preco)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estoque)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Preco)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estoque)
+                </td>
+                <td>
+                    @Html.ActionLink("Detalhes", "Get", new { id = item.id }) |
+                    @Html.ActionLink("Editar", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Excluir", "Delete", new { id = item.id })
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
